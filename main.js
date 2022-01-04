@@ -1,6 +1,6 @@
 /*----- constants -----*/
 
-const COLORS = ["red", "purple", "green", "blue", "yellow", "pink"];
+const COLORS = ["orange", "purple", "green", "cyan", "yellow", "pink"];
 
 
 /*----- app's state (variables) -----*/
@@ -12,11 +12,12 @@ let winner;
 /*----- cached element references -----*/
 
 const msgEl = document.querySelector("p");
-const spacemarkersEl = document.querySelectorAll("#spacemarkers > div");
+const spacemarkersEl = [document.querySelectorAll("#spacemarkers > div")];
 
 /*----- event listeners -----*/
 
-document.querySelector("#spacemarkers").addEventListener("click", handleClick);
+document.querySelector("#spacemarkers")
+    .addEventListener("click", handleClick);
 
 /*----- functions -----*/
 init();
@@ -39,8 +40,14 @@ function render() {
 }
 
 function handleClick(evt) {
-    const colIdx = spacemarkersEl.indexOf(evt.target)
-
+    const colIdx = spacemarkersEl.indexOf(evt.target);
+    if (colIdx === -1 || winner) return;
+    const colArr = board[colIdx];
+    const rowIdx = colArr.indexOf(0);
+    colArr[rowIdx] = curGuessIdx;
+    turn *= -1;
+    winner = scrtCode(colIdx, rowIdx);
+    render();
 
 }
 
@@ -54,12 +61,6 @@ function renderBoard() {
     });
 }
 
-function renderScore(){
-    board.forEach(function (scoreObj))
-
-}
- 
-
 function getNewGuess() {
     return {
         code: [null, null, null, null], 
@@ -67,3 +68,10 @@ function getNewGuess() {
         perfect: 0,
     };
 }
+
+function scrtCode() {
+    let scrtColors = COLORS[Math.floor(math.random() * COLORS.length)];
+    el.style.visability = scrtColors ? 'visible' : 'hidden';
+        return scrtColors;
+}
+

@@ -12,9 +12,11 @@ let winner;
 /*----- cached element references -----*/
 
 const msgEl = document.querySelector("p");
+const spacemarkersEl = document.querySelectorAll("#spacemarkers > div");
 
 /*----- event listeners -----*/
 
+document.querySelector("#spacemarkers").addEventListener("click", handleClick);
 
 /*----- functions -----*/
 init();
@@ -34,6 +36,12 @@ function render() {
         msgEl.innerHTML = `You have ${9 - curGuessIdx} Guesses!`
     }
     renderBoard();
+}
+
+function handleClick(evt) {
+    const colIdx = spacemarkersEl.indexOf(evt.target)
+
+
 }
 
 function renderBoard() {

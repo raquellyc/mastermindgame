@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    height: 90vh;
+    margin: 50vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    border: solid thistle;
+    padding: 2vmin;
+    color: gray;
+    font-size: 9vmin;
+}
+p{
+    width: 50vmin;
+    text-align: center;
+    font-size: 4vmin;
+
+}
+.upbttn{
+    display: grid;
+    grid-auto-flow: column;
+    height: 10vmin;
+    gap: 5vmin;
+}
+
+#board {
+    display: grid;
+    gap: 3vmin;
+    grid-template-columns: repeat(4, 10vmin);
+    grid-template-rows: repeat(9, 10vmin);
+    margin-top: 10vmin;
+}
+
+#board > div{
+    border-radius: 50%;
+    border: beige solid;
+}
+
+#spacemarkers{
+    display: grid;
+    grid-template-columns: repeat(4, 10vmin);
+    gap: 3vmin;
+    margin-top: -2vmin;
+
+}
+
+#spacemarkers > div {
+    height: 4vmin;
+    border-width: 5vmin;
+    border-style: solid;
+    border-color: transparent transparent thistle;
+    transform: scale(0.8);
+}
+
+.colorsel{
+    display: grid;
+    grid-template-columns: repeat(6, 10vmin);
+    gap: 3vmin;
+    margin-bottom: 5vmin;
+}
+
+.colorsel > div {
+    margin-top: 5vmin;
+    height: 10vmin;
+    border: beige solid;
+    border-radius: 50%;
+}
+
+#col0 {
+    background-color: pink;
+}
+#col1 {
+    background-color: orange;
+}
+#col2 {
+    background-color: plum;
+}
+#col3 {
+    background-color: lightskyblue;
+}
+#col4 {
+    background-color: lemonchiffon;
+}
+#col5 {
+    background-color: darkseagreen;
+}
+
+button{
+    margin-top: 3vmin;
+    padding: 4vmin;
+    background-color: thistle;
+    color: white;
+    border-radius: 90%;
+    border-color: transparent;
+}
+
+button:hover{
+    background-color: gainsboro;
+}

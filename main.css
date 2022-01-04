@@ -14,6 +14,13 @@ h1{
     border: solid thistle;
     padding: 2vmin;
     color: gray;
+    font-size: 9vmin;
+}
+p{
+    width: 50vmin;
+    text-align: center;
+    font-size: 4vmin;
+
 }
 .upbttn{
     display: grid;
@@ -55,6 +62,7 @@ h1{
     display: grid;
     grid-template-columns: repeat(6, 10vmin);
     gap: 3vmin;
+    margin-bottom: 5vmin;
 }
 
 .colorsel > div {
@@ -77,7 +85,7 @@ h1{
     background-color: lightskyblue;
 }
 #col4 {
-    background-color: lemonchiffon
+    background-color: lemonchiffon;
 }
 #col5 {
     background-color: darkseagreen;
@@ -93,5 +101,5 @@ button{
 }
 
 button:hover{
-    background-color: beige;
+    background-color: gainsboro;
 }

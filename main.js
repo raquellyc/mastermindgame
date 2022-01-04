@@ -1,6 +1,6 @@
 /*----- constants -----*/
 
-const COLORS = ["orange", "purple", "green", "cyan", "yellow", "pink"];
+const COLORS = ["orange", "plum", "green", "lightskyblue", "lemonchiffon", "pink"];
 
 
 /*----- app's state (variables) -----*/

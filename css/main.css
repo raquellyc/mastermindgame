@@ -58,14 +58,14 @@ p{
     transform: scale(0.8);
 }
 
-.colorsel{
+#colorsel{
     display: grid;
     grid-template-columns: repeat(6, 10vmin);
     gap: 3vmin;
     margin-bottom: 5vmin;
 }
 
-.colorsel > div {
+#colorsel > div {
     margin-top: 5vmin;
     height: 10vmin;
     border: beige solid;

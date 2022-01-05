@@ -72,7 +72,7 @@ function renderScore() {
 }
 
 function renderColorPicker() {
-
+    
 }
 
 function getNewGuess() {

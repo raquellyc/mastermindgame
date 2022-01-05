@@ -8,6 +8,8 @@ const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darks
 let board;
 let curGuessIdx;
 let winner;
+let colid;
+let columnId;
 
 /*----- cached element references -----*/
 
@@ -32,7 +34,7 @@ triId.addEventListener("click", function(evt){
 init();
 
 function init() {
-    board = [getNewGuess()];
+    board = [null, null, null, null];
     curGuessIdx = 0;
     winner = false;
     render();
@@ -50,7 +52,9 @@ function render() {
 
 
 function renderBoard() {
-    // guessObj.code[columnId] = COLORS[colid]
+    console.log(board, colid)
+    board[columnId] = COLORS[colid]
+    console.log(board)
 
     board.forEach(function (guessObj, rowIdx) { 
         guessObj.code.forEach(function (colorIdx, colIdx) {
@@ -59,6 +63,10 @@ function renderBoard() {
         });    
         //to do: render score!
     });
+}
+
+function renderColorPicker(){
+
 }
 
 function getNewGuess() {
@@ -70,6 +78,7 @@ function getNewGuess() {
 }
 
 function scrtCode() {
+
     let scrtColors = COLORS[Math.floor(math.random() * COLORS.length)];
     el.style.visability = scrtColors ? 'visible' : 'hidden';
         return scrtColors;

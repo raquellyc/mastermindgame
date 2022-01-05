@@ -3,32 +3,36 @@
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
 let gameScore = 0;
 
+
 /*----- app's state (variables) -----*/
 
 let board;
 let curGuessIdx;
 let winner;
-// let colid;
-// let columnId;
+let colId;
+let columnId;
 
 /*----- cached element references -----*/
 
 const msgEl = document.querySelector("p");
 const colorSel = document.getElementById("colorsel");
 const triId = document.getElementById("spacemarkers");
+const checkbttn = document.getElementById("check");
 
 /*----- event listeners -----*/
 colorSel.addEventListener('click', function(evt){
-    let buttnid = evt.target.id
-    let colid = buttnid[3]
-    console.log(COLORS[colid])
-});
+     let buttnId = evt.target.id
+    let colId = buttnId[3]
+    console.log(COLORS[colId])
+})
 
 triId.addEventListener("click", function(evt){
     let purpId = evt.target.id
-    let columnId = purpId[1]
+    let curGuessIdx = purpId[1]
     renderBoard();
 })
+
+checkbttn.addEventListener("click", checkGuess);
 
 /*----- functions -----*/
 init();
@@ -52,8 +56,8 @@ function render() {
 
 
 function renderBoard() {
-    // console.log(board, colid)
-    // board[columnId] = COLORS[colid]
+    // console.log(board, colId)
+    // board[columnId] = COLORS[colId]
     // console.log(board)
     board.forEach(function (guessObj, rowIdx) { 
         guessObj.code.forEach(function (colorIdx, colIdx) {
@@ -63,18 +67,6 @@ function renderBoard() {
         //to do: render score!
     });
 }
-function renderScore() {
-    if (curGuessIdx != scrtCode) {
-        document.getElementById("status").innerHTML += "<p>Not even close!<p>";
-        gameScore++;
-
-    }
-}
-
-function renderColorPicker() {
-    
-}
-
 function getNewGuess() {
     return {
         code: [null, null, null, null],  
@@ -83,10 +75,32 @@ function getNewGuess() {
     };
 }
 
-function scrtCode() {
+function checkGuess() {
+     if (curGuessIdx !== scrtCode) {
+        document.getElementById("status").innerHTML += "<p>Not even close!<p>";
+        gameScore++;
+    //  } else if {
+    //      (curGuessIdx )
 
-    let scrtColors = COLORS[Math.floor(math.random() * COLORS.length)];
-    el.style.visability = scrtColors ? 'visible' : 'hidden';
-        return scrtColors;
+    //  }
+    
 }
 
+function renderScore() {
+    
+    
+}
+
+function renderColorPicker() {
+   
+
+    
+}
+
+
+
+function scrtCode() {
+    let scrtColors = COLORS[Math.floor(math.random() * code.length)];
+    el.style.visability = scrtColors ? 'visible' : 'hidden';
+        return scrtCode;
+}

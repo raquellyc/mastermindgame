@@ -1,15 +1,15 @@
 /*----- constants -----*/
 
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
-
+let gameScore = 0;
 
 /*----- app's state (variables) -----*/
 
 let board;
 let curGuessIdx;
 let winner;
-let colid;
-let columnId;
+// let colid;
+// let columnId;
 
 /*----- cached element references -----*/
 
@@ -34,7 +34,7 @@ triId.addEventListener("click", function(evt){
 init();
 
 function init() {
-    board = [null, null, null, null];
+    board = [getNewGuess()];
     curGuessIdx = 0;
     winner = false;
     render();
@@ -52,10 +52,9 @@ function render() {
 
 
 function renderBoard() {
-    console.log(board, colid)
-    board[columnId] = COLORS[colid]
-    console.log(board)
-
+    // console.log(board, colid)
+    // board[columnId] = COLORS[colid]
+    // console.log(board)
     board.forEach(function (guessObj, rowIdx) { 
         guessObj.code.forEach(function (colorIdx, colIdx) {
             const div = document.getElementById(`c${colIdx}r${rowIdx}`);
@@ -64,8 +63,15 @@ function renderBoard() {
         //to do: render score!
     });
 }
+function renderScore() {
+    if (curGuessIdx != scrtCode) {
+        document.getElementById("status").innerHTML += "<p>Not even close!<p>";
+        gameScore++;
 
-function renderColorPicker(){
+    }
+}
+
+function renderColorPicker() {
 
 }
 

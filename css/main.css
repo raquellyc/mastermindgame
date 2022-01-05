@@ -91,6 +91,25 @@ p{
     background-color: darkseagreen;
 }
 
+#secretcode{
+    display: grid;
+    gap: 3vmin;
+    grid-template-columns: repeat(4, 10vmin);
+    margin-top: 9vmin;
+    margin-bottom: -4vmin;
+    padding: 2vmin;
+    border: beige solid;
+    
+}
+
+#secretcode > div {
+    
+    height: 10vmin;
+    border: thistle solid;
+    border-radius: 50%;
+    background-color: beige;
+}
+
 button{
     margin-top: 3vmin;
     padding: 4vmin;

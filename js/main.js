@@ -20,11 +20,6 @@ const triId = document.getElementById("spacemarkers");
 const checkbttn = document.getElementById("check");
 
 /*----- event listeners -----*/
-colorSel.addEventListener('click', function(evt){
-     let buttnId = evt.target.id
-    let colId = buttnId[3]
-    console.log(COLORS[colId])
-})
 
 triId.addEventListener("click", function(evt){
     let purpId = evt.target.id
@@ -45,6 +40,7 @@ function init() {
     //render is always last!
 }
 
+//this is the guess count and winner annoucement!
 function render() {
     if (winner) {
         msgEl.innerHTML = "You Won!";
@@ -92,9 +88,13 @@ function renderScore() {
 }
 
 function renderColorPicker() {
-   
-
-    
+    colorSel.addEventListener('click', function(evt){
+        let buttnId = evt.target.id
+        let colId = buttnId[3]
+        curGuessIdx.style.background = colId;
+        
+        
+   })   
 }
 
 

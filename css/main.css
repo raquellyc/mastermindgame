@@ -3,8 +3,8 @@
 }
 
 body {
-    height: 90vh;
-    margin: 50vmin;
+    height: 200vh;
+    margin: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

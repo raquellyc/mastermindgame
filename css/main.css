@@ -69,7 +69,7 @@ p{
 #colorsel > div {
     margin-top: 5vmin;
     height: 10vmin;
-    border: beige solid;
+    border: 1vmin solid beige;
     border-radius: 50%;
 }
 
@@ -122,4 +122,8 @@ button{
 
 button:hover{
     background-color: gainsboro;
+}
+#colorsel > div.selected-color {
+    border-color: black;
+
 }

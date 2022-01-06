@@ -11,7 +11,7 @@ let scrtCode = [];
 let board;
 let curGuessIdx;
 let winner;
-let selectcolor;
+let selColorIdx;
 let colId;
 let columnId;
 
@@ -25,9 +25,9 @@ const checkbttn = document.getElementById("check");
 
 /*----- event listeners -----*/
 colorSel.addEventListener('click', function(evt){
-        let buttnId = evt.target.id
-        let colId = buttnId[3]
-        curGuessIdx.style.background = colId;
+    let btnId = evt.target.id;
+    selColorIdx = parseInt(btnId[3]);
+    render();
 })
 
 triId.addEventListener("click", function(evt){
@@ -45,6 +45,7 @@ function init() {
     board = [getNewGuess()];
     curGuessIdx = 0;
     winner = false;
+    selColorIdx = 0;
     render();
     //render is always last!
 }
@@ -57,6 +58,7 @@ function render() {
         msgEl.innerHTML = `You have ${9 - curGuessIdx} Guesses!`
     }
     renderBoard();
+    renderColorPicker();
 }
 
 
@@ -81,20 +83,16 @@ function getNewGuess() {
 }
 
 function checkGuess() {
-     if (allcolors = COLORS.every(function(scrtCode){
-         
-     }) {
-        document.getElementById("status").innerHTML += "<p>Not even close!<p>";
-        gameScore++;
-    //  } else if {
-    //      (curGuessIdx )
-
-    //  }
-    
+     
 }
 
 function renderColorPicker() {
-    
+    let html = "";
+    COLORS.forEach(function(color, idx) {
+        const activeColor = idx === selColorIdx ? 'class="selected-color"' : "" ;
+        html += `<div ${activeColor} id="col${idx}"></div>`;
+    });
+    colorSel.innerHTML = html;
 }
 
 function makescrtCode() {

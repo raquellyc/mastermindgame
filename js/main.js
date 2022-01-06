@@ -2,6 +2,8 @@
 
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
 let gameScore = 0;
+let scrtCode = [];
+
 
 
 /*----- app's state (variables) -----*/
@@ -9,8 +11,10 @@ let gameScore = 0;
 let board;
 let curGuessIdx;
 let winner;
+let selectcolor;
 let colId;
 let columnId;
+
 
 /*----- cached element references -----*/
 
@@ -20,10 +24,15 @@ const triId = document.getElementById("spacemarkers");
 const checkbttn = document.getElementById("check");
 
 /*----- event listeners -----*/
+colorSel.addEventListener('click', function(evt){
+        let buttnId = evt.target.id
+        let colId = buttnId[3]
+        curGuessIdx.style.background = colId;
+})
 
 triId.addEventListener("click", function(evt){
     let purpId = evt.target.id
-    let curGuessIdx = purpId[1]
+    let colId = purpId[1]
     renderBoard();
 })
 
@@ -72,7 +81,9 @@ function getNewGuess() {
 }
 
 function checkGuess() {
-     if (curGuessIdx !== scrtCode) {
+     if (allcolors = COLORS.every(function(scrtCode){
+         
+     }) {
         document.getElementById("status").innerHTML += "<p>Not even close!<p>";
         gameScore++;
     //  } else if {
@@ -82,25 +93,12 @@ function checkGuess() {
     
 }
 
-function renderScore() {
-    
-    
-}
-
 function renderColorPicker() {
-    colorSel.addEventListener('click', function(evt){
-        let buttnId = evt.target.id
-        let colId = buttnId[3]
-        curGuessIdx.style.background = colId;
-        
-        
-   })   
+    
 }
 
-
-
-function scrtCode() {
-    let scrtColors = COLORS[Math.floor(math.random() * code.length)];
-    el.style.visability = scrtColors ? 'visible' : 'hidden';
-        return scrtCode;
+function makescrtCode() {
+    
+    let scrtCode = COLORS[Math.floor(math.random() * COLORS.length)];
+    return scrtCode;
 }

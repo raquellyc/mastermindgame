@@ -1,8 +1,8 @@
 /*----- constants -----*/
 
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
-let gameScore = 0;
-let scrtCode = [];
+
+
 
 
 
@@ -14,29 +14,21 @@ let winner;
 let selColorIdx;
 let colId;
 let columnId;
-
+let scrtCode;
 
 /*----- cached element references -----*/
 
 const msgEl = document.querySelector("p");
 const colorSel = document.getElementById("colorsel");
-const triId = document.getElementById("spacemarkers");
-const checkbttn = document.getElementById("check");
+const checkBtn = document.getElementById("check");
+const secretEl = document.getElementById('secretcode');
 
 /*----- event listeners -----*/
-colorSel.addEventListener('click', function(evt){
-    let btnId = evt.target.id;
-    selColorIdx = parseInt(btnId[3]);
-    render();
-})
+colorSel.addEventListener('click', handleColorSelection);
 
-triId.addEventListener("click", function(evt){
-    let purpId = evt.target.id
-    let colId = purpId[1]
-    renderBoard();
-})
+document.getElementById("spacemarkers").addEventListener("click", handleMarkerSelection);
 
-checkbttn.addEventListener("click", checkGuess);
+checkBtn.addEventListener("click", checkGuess);
 
 /*----- functions -----*/
 init();
@@ -44,28 +36,55 @@ init();
 function init() {
     board = [getNewGuess()];
     curGuessIdx = 0;
-    winner = false;
+    winner = null;
     selColorIdx = 0;
+    scrtCode = getScrtCode();
     render();
     //render is always last!
 }
 
 //this is the guess count and winner annoucement!
 function render() {
-    if (winner) {
+    if (winner === null) {
+        msgEl.innerHTML = `You have ${9 - curGuessIdx} Guesses!`
+    } else if (winner) {
         msgEl.innerHTML = "You Won!";
     } else {
-        msgEl.innerHTML = `You have ${9 - curGuessIdx} Guesses!`
+        msgEl.innerHTML = "You lost!";
     }
+    secretEl.style.display = winner === null ? 'none' : 'block';
     renderBoard();
+    renderCheckBtn();
     renderColorPicker();
 }
 
+function renderCheckBtn() {
+    if (winner !== null) return;
+    const resultEl = document.getElementById(`r${board.length - 1}`);
+    console.log(resultEl)
+    resultEl.appendChild(checkBtn);
+    checkBtn.disabled = getCurGuess().code.includes(null);
+}
+
+function getCurGuess() {
+    return board[board.length - 1];
+}
+
+function handleColorSelection(evt) {
+    let btnId = evt.target.id;
+    selColorIdx = parseInt(btnId[3]);
+    render();
+}
+
+function handleMarkerSelection(evt) {
+    let markerId = evt.target.id;
+    let markerIdx = parseInt(markerId[1]);
+    const curGuess = board[board.length - 1];
+    curGuess.code[markerIdx] = selColorIdx;
+    render();
+}
 
 function renderBoard() {
-    // console.log(board, colId)
-    // board[columnId] = COLORS[colId]
-    // console.log(board)
     board.forEach(function (guessObj, rowIdx) { 
         guessObj.code.forEach(function (colorIdx, colIdx) {
             const div = document.getElementById(`c${colIdx}r${rowIdx}`);
@@ -95,8 +114,10 @@ function renderColorPicker() {
     colorSel.innerHTML = html;
 }
 
-function makescrtCode() {
-    
-    let scrtCode = COLORS[Math.floor(math.random() * COLORS.length)];
-    return scrtCode;
+function getScrtCode() {
+    const code = [];
+    for (let i = 0; i < 4; i++) {
+        code.push(Math.floor(Math.random() * COLORS.length));
+    }
+    return code;
 }

@@ -1,30 +1,33 @@
 * {
     box-sizing: border-box;
-    
+    background-color:rgb(228, 228, 228);
 }
 
 body {
-    height: 200vh;
-    margin: 40vh;
+    height: 100vh;
+    margin: 50vmin;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Righteous', cursive;
 }
+
 h1 {
     border: solid thistle;
-    padding: 2vmin;
+    padding: 3vmin;
     color: gray;
     font-size: 9vmin;
+    margin-bottom: 1vmin;
 }
+
 p {
     width: 50vmin;
     text-align: center;
     font-size: 4vmin;
-    margin-bottom: -2vmin;
-
+    margin-bottom: -5vmin;
+    color: gray;
 }
-
 
 #board {
     display: grid;
@@ -43,16 +46,17 @@ p {
     display: grid;
     grid-template-columns: repeat(4, 10vmin) 18vmin;
     gap: 3vmin;
-    margin-top: -2vmin;
+   
 
 }
 
 #spacemarkers > div {
     height: 4vmin;
-    border-width: 5vmin;
+    border-width: 6vmin;
     border-style: solid;
     border-color: transparent transparent thistle;
     transform: scale(0.8);
+    
 }
 
 #colorsel {
@@ -72,18 +76,23 @@ p {
 #col0 {
     background-color: pink;
 }
+
 #col1 {
     background-color: orange;
 }
+
 #col2 {
     background-color: plum;
 }
+
 #col3 {
     background-color: lightskyblue;
 }
+
 #col4 {
     background-color: lemonchiffon;
 }
+
 #col5 {
     background-color: darkseagreen;
 }
@@ -161,6 +170,6 @@ div.result > article {
     display: grid;
     grid-template-columns: repeat(2, 3vmin);
     grid-template-rows: repeat(2, 3vmin);
-    gap: 0.5vmin;
+    gap: 1vmin;
 }
 

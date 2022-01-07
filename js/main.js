@@ -1,19 +1,15 @@
 /*----- constants -----*/
-
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
 
 /*----- app's state (variables) -----*/
-
 let board;
 let winner;
 let loser;
 let selColorIdx;
 let scrtCode;
 
-
 /*----- cached element references -----*/
-
-const msgEl = document.querySelector("p");
+const msgEl = document.querySelector('p');
 const colorSel = document.getElementById('colorsel');
 const checkBtn = document.getElementById('check');
 const secretEl = document.getElementById('secretcode');
@@ -142,15 +138,15 @@ function handleRestart() {
     board.forEach(function(guessObj, rowIdx) {
         guessObj.code.forEach(function (colorIdx, colIdx) {
             const div = document.getElementById(`c${colIdx}r${rowIdx}`);
-            div.style.backgroundColor = 'white';
+            div.style.backgroundColor = 'rgb(228, 228, 228)';
             const resultEl = document.getElementById(`r${rowIdx}`);  
             resultEl.innerHTML = ''; 
         });
-    })
+    });
     scrtCode.forEach(function(color, colorIdx) {
     const div = document.getElementById(`color${colorIdx + 1}`);
     div.style.backgroundColor = 'beige';
-    })
+    });
 
     init();
 }
@@ -176,6 +172,5 @@ function scrtCodeDisplay() {
     scrtCode.forEach(function(color, colorIdx) {
         const div = document.getElementById(`color${colorIdx + 1}`);
         div.style.backgroundColor = COLORS[color];
-    })
-    }
-
+    });
+}

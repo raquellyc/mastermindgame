@@ -2,18 +2,11 @@
 
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
 
-
-
-
-
 /*----- app's state (variables) -----*/
 
 let board;
-let curGuessIdx;
 let winner;
 let selColorIdx;
-let colId;
-let columnId;
 let scrtCode;
 
 /*----- cached element references -----*/
@@ -33,7 +26,6 @@ init();
 
 function init() {
     board = [getNewGuess()];
-    curGuessIdx = 0;
     winner = null;
     selColorIdx = 0;
     scrtCode = getScrtCode();
@@ -44,7 +36,7 @@ function init() {
 //this is the guess count and winner annoucement!
 function render() {
     if (winner === null) {
-        msgEl.innerHTML = `You have ${9 - curGuessIdx} Guesses!`
+        msgEl.innerHTML = `You have ${10 - board.length} Guesses!`;
     } else if (winner) {
         msgEl.innerHTML = "You Won!";
     } else {
@@ -102,6 +94,7 @@ function renderBoard() {
         }
     });
 }
+
 function getNewGuess() {
     return {
         code: [null, null, null, null],  
@@ -127,6 +120,7 @@ function handleCheckGuess() {
         if (foundIdx !== -1) {
             guess.almost++;
             copyCode[foundIdx] = null;
+            
         }
     }
     if (guess.perfect === 4) {

@@ -22,7 +22,7 @@ p {
     text-align: center;
     font-size: 4vmin;
     margin-bottom: -2vmin;
-    margin-top: 8vmin;
+    margin-top: 9vmin;
 
 }
 .upbttn {
@@ -95,7 +95,6 @@ p {
 }
 
 #secretcode {
-    display: grid;
     gap: 3vmin;
     grid-template-columns: repeat(4, 10vmin);
     margin-top: 9vmin;
@@ -106,7 +105,6 @@ p {
 }
 
 #secretcode > div {
-    
     height: 10vmin;
     border: thistle solid;
     border-radius: 50%;

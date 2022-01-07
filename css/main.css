@@ -1,5 +1,6 @@
-*{
+* {
     box-sizing: border-box;
+    
 }
 
 body {
@@ -10,41 +11,37 @@ body {
     justify-content: center;
     align-items: center;
 }
-h1{
+h1 {
     border: solid thistle;
     padding: 2vmin;
     color: gray;
     font-size: 9vmin;
 }
-p{
+p {
     width: 50vmin;
     text-align: center;
     font-size: 4vmin;
+    margin-bottom: -2vmin;
 
 }
-.upbttn{
-    display: grid;
-    grid-auto-flow: column;
-    height: 10vmin;
-    gap: 5vmin;
-}
+
 
 #board {
     display: grid;
     gap: 3vmin;
-    grid-template-columns: repeat(4, 10vmin);
+    grid-template-columns: repeat(4, 10vmin) 18vmin;
     grid-template-rows: repeat(9, 10vmin);
     margin-top: 10vmin;
 }
 
-#board > div{
+#board > div:not(.result) {
     border-radius: 50%;
     border: beige solid;
 }
 
-#spacemarkers{
+#spacemarkers {
     display: grid;
-    grid-template-columns: repeat(4, 10vmin);
+    grid-template-columns: repeat(4, 10vmin) 18vmin;
     gap: 3vmin;
     margin-top: -2vmin;
 
@@ -58,7 +55,7 @@ p{
     transform: scale(0.8);
 }
 
-#colorsel{
+#colorsel {
     display: grid;
     grid-template-columns: repeat(6, 10vmin);
     gap: 3vmin;
@@ -68,7 +65,7 @@ p{
 #colorsel > div {
     margin-top: 5vmin;
     height: 10vmin;
-    border: beige solid;
+    border: 1vmin solid beige;
     border-radius: 50%;
 }
 
@@ -91,7 +88,24 @@ p{
     background-color: darkseagreen;
 }
 
-button{
+#secretcode {
+    gap: 3vmin;
+    grid-template-columns: repeat(4, 10vmin);
+    margin-top: 9vmin;
+    margin-bottom: -4vmin;
+    padding: 2vmin;
+    border: beige solid;
+    
+}
+
+#secretcode > div {
+    height: 10vmin;
+    border: thistle solid;
+    border-radius: 50%;
+    background-color: beige;
+}
+
+button {
     margin-top: 3vmin;
     padding: 4vmin;
     background-color: thistle;
@@ -100,6 +114,53 @@ button{
     border-color: transparent;
 }
 
-button:hover{
-    background-color: gainsboro;
+button:hover:not(:disabled) {
+    background-color: violet;
 }
+#check {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 90%;
+    height: 6vmin;
+}
+
+#check:disabled {
+    background-color: lightgray;
+}
+
+#colorsel > div.selected-color {
+    border-color: gray;
+
+}
+
+div.result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.perfect, div.almost, div.miss {
+    border-radius: 50%;
+    border: none;
+}
+
+div.perfect {
+    background-color: black;
+}
+div.almost {
+    background-color: lightgray;
+}
+div.miss {
+    background-color: white;
+    border: 0.2vmin solid gray;
+}
+div.result > article {
+    display: grid;
+    grid-template-columns: repeat(2, 3vmin);
+    grid-template-rows: repeat(2, 3vmin);
+    gap: 0.5vmin;
+}
+

@@ -6,20 +6,24 @@ const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darks
 
 let board;
 let winner;
+let loser;
 let selColorIdx;
 let scrtCode;
+
 
 /*----- cached element references -----*/
 
 const msgEl = document.querySelector("p");
-const colorSel = document.getElementById("colorsel");
-const checkBtn = document.getElementById("check");
+const colorSel = document.getElementById('colorsel');
+const checkBtn = document.getElementById('check');
 const secretEl = document.getElementById('secretcode');
+const restartBtn = document.getElementById('restart');
 
 /*----- event listeners -----*/
 colorSel.addEventListener('click', handleColorSelection);
-document.getElementById("spacemarkers").addEventListener("click", handleMarkerSelection);
-checkBtn.addEventListener("click", handleCheckGuess);
+document.getElementById('spacemarkers').addEventListener('click', handleMarkerSelection);
+checkBtn.addEventListener('click', handleCheckGuess);
+restartBtn.addEventListener('click', handleRestart);
 
 /*----- functions -----*/
 init();
@@ -27,6 +31,7 @@ init();
 function init() {
     board = [getNewGuess()];
     winner = null;
+    loser = null;
     selColorIdx = 0;
     scrtCode = getScrtCode();
     render();
@@ -35,12 +40,13 @@ function init() {
 
 //this is the guess count and winner annoucement!
 function render() {
-    if (winner === null) {
+    if (winner) {
+        msgEl.innerHTML = 'You won!';
+    } else if (winner === null) {
         msgEl.innerHTML = `You have ${10 - board.length} Guesses!`;
-    } else if (winner) {
-        msgEl.innerHTML = "You Won!";
-    } else {
-        msgEl.innerHTML = "You lost!";
+    } 
+    else if (loser){
+        msgEl.innerHTML = 'You lost!';
     }
     secretEl.style.display = winner !== null ? 'none' : 'grid';
     renderBoard();
@@ -120,21 +126,39 @@ function handleCheckGuess() {
         if (foundIdx !== -1) {
             guess.almost++;
             copyCode[foundIdx] = null;
-            
         }
     }
     if (guess.perfect === 4) {
         winner = true;
+    } else if(board.length === 9) {
+        scrtCodeDisplay();
     } else {
         board.push(getNewGuess());
     }
     render();
 }
 
+function handleRestart() {
+    board.forEach(function(guessObj, rowIdx) {
+        guessObj.code.forEach(function (colorIdx, colIdx) {
+            const div = document.getElementById(`c${colIdx}r${rowIdx}`);
+            div.style.backgroundColor = 'white';
+            const resultEl = document.getElementById(`r${rowIdx}`);  
+            resultEl.innerHTML = ''; 
+        });
+    })
+    scrtCode.forEach(function(color, colorIdx) {
+    const div = document.getElementById(`color${colorIdx + 1}`);
+    div.style.backgroundColor = 'beige';
+    })
+
+    init();
+}
+
 function renderColorPicker() {
-    let html = "";
+    let html = '';
     COLORS.forEach(function(color, idx) {
-        const activeColor = idx === selColorIdx ? 'class="selected-color"' : "" ;
+        const activeColor = idx === selColorIdx ? 'class="selected-color"' : '' ;
         html += `<div ${activeColor} id="col${idx}"></div>`;
     });
     colorSel.innerHTML = html;
@@ -147,4 +171,11 @@ function getScrtCode() {
     }
     return code;
 }
+
+function scrtCodeDisplay() {
+    scrtCode.forEach(function(color, colorIdx) {
+        const div = document.getElementById(`color${colorIdx + 1}`);
+        div.style.backgroundColor = COLORS[color];
+    })
+    }
 

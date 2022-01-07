@@ -22,15 +22,9 @@ p {
     text-align: center;
     font-size: 4vmin;
     margin-bottom: -2vmin;
-    margin-top: 9vmin;
 
 }
-.upbttn {
-    display: grid;
-    grid-auto-flow: column;
-    height: 10vmin;
-    gap: 5vmin;
-}
+
 
 #board {
     display: grid;

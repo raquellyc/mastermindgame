@@ -1,19 +1,15 @@
 /*----- constants -----*/
-
 const COLORS = ["pink", "orange", "plum", "lightskyblue", "lemonchiffon", "darkseagreen"];
 
 /*----- app's state (variables) -----*/
-
 let board;
 let winner;
 let loser;
 let selColorIdx;
 let scrtCode;
 
-
 /*----- cached element references -----*/
-
-const msgEl = document.querySelector("p");
+const msgEl = document.querySelector('p');
 const colorSel = document.getElementById('colorsel');
 const checkBtn = document.getElementById('check');
 const secretEl = document.getElementById('secretcode');
@@ -146,11 +142,11 @@ function handleRestart() {
             const resultEl = document.getElementById(`r${rowIdx}`);  
             resultEl.innerHTML = ''; 
         });
-    })
+    });
     scrtCode.forEach(function(color, colorIdx) {
     const div = document.getElementById(`color${colorIdx + 1}`);
     div.style.backgroundColor = 'beige';
-    })
+    });
 
     init();
 }
@@ -176,6 +172,5 @@ function scrtCodeDisplay() {
     scrtCode.forEach(function(color, colorIdx) {
         const div = document.getElementById(`color${colorIdx + 1}`);
         div.style.backgroundColor = COLORS[color];
-    })
-    }
-
+    });
+}

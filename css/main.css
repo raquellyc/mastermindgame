@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    
 }
 
 body {
@@ -11,20 +10,20 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 h1 {
     border: solid thistle;
     padding: 2vmin;
     color: gray;
     font-size: 9vmin;
 }
+
 p {
     width: 50vmin;
     text-align: center;
     font-size: 4vmin;
     margin-bottom: -2vmin;
-
 }
-
 
 #board {
     display: grid;
@@ -72,18 +71,23 @@ p {
 #col0 {
     background-color: pink;
 }
+
 #col1 {
     background-color: orange;
 }
+
 #col2 {
     background-color: plum;
 }
+
 #col3 {
     background-color: lightskyblue;
 }
+
 #col4 {
     background-color: lemonchiffon;
 }
+
 #col5 {
     background-color: darkseagreen;
 }

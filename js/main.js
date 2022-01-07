@@ -42,7 +42,7 @@ function render() {
     } else {
         msgEl.innerHTML = "You lost!";
     }
-    secretEl.style.display = winner === null ? 'none' : 'block';
+    secretEl.style.display = winner !== null ? 'none' : 'grid';
     renderBoard();
     renderCheckBtn();
     renderColorPicker();

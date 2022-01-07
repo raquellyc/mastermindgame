@@ -46,8 +46,6 @@ p {
     display: grid;
     grid-template-columns: repeat(4, 10vmin) 18vmin;
     gap: 3vmin;
-   
-
 }
 
 #spacemarkers > div {
@@ -103,8 +101,7 @@ p {
     margin-top: 9vmin;
     margin-bottom: -4vmin;
     padding: 2vmin;
-    border: beige solid;
-    
+    border: beige solid; 
 }
 
 #secretcode > div {
@@ -141,7 +138,6 @@ button:hover:not(:disabled) {
 
 #colorsel > div.selected-color {
     border-color: gray;
-
 }
 
 div.result {

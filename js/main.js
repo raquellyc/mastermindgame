@@ -138,7 +138,7 @@ function handleRestart() {
     board.forEach(function(guessObj, rowIdx) {
         guessObj.code.forEach(function (colorIdx, colIdx) {
             const div = document.getElementById(`c${colIdx}r${rowIdx}`);
-            div.style.backgroundColor = 'white';
+            div.style.backgroundColor = 'rgb(228, 228, 228)';
             const resultEl = document.getElementById(`r${rowIdx}`);  
             resultEl.innerHTML = ''; 
         });
